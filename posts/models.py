@@ -26,7 +26,7 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField()
     content = models.TextField()
-    tags = models.ManyToMany(Tag, related_name='posts')
+    tags = models.ManyToManyField(Tag, related_name='posts')
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='posts')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     status = models.CharField(max_length=2, choices=STATUS_CHOICES)

@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'authors',
     'categories',
     'posts',
-    'tags',
     'comments',
 ]
 
