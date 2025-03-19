@@ -19,17 +19,16 @@ class Tag(models.Model):
 
 class Post(models.Model):
     STATUS_CHOICES=(
-        ('ac', 'Active'),
-        ('pd', 'Pending'),
-        ('in', 'Inactive'),
+        ('published', 'Published'),
+        ('draft', 'Draft'),
     )
     title = models.CharField(max_length=150)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True, null=True, blank=True)
     content = models.TextField()
     tags = models.ManyToManyField(Tag, related_name='posts')
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='posts')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
