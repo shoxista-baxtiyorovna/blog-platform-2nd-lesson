@@ -21,7 +21,10 @@ class CommentListCreateView(APIView):
 
     def post(self, request, slug):
         post = self.get_object(slug)
-        serializer = CommentSerializer(data=request.data)
+        data = request.data.copy()
+        data['post'] = post.id
+
+        serializer = CommentSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)

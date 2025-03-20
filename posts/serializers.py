@@ -24,11 +24,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_comments_count(self, obj):
         return obj.comments.count()
-    #
-    # def to_internal_value(self, data):
-    #     super().to_internal_value(data)
-    #     if data['author']:
-    #
-    #
-    # def to_representation(self, instance):
-    #     super().to_representation(instance)
+

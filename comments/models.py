@@ -4,7 +4,7 @@ from posts.models import Post
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    parent_comment = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    parent_comment = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='replies')
     author_name = models.CharField(max_length=150)
     author_email = models.EmailField()
     content = models.TextField()
